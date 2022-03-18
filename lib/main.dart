@@ -1,65 +1,341 @@
+import 'dart:developer';
 import 'dart:ui';
 
+import 'package:app_row_column04/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-//======================== 13 Image Widget =====================================
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Latihan Image Widget'),
-        ),
-        body: Column(
-          children: <Widget>[
-            Flexible(
-              flex: 2,
-              child: Container(
-                margin: const EdgeInsets.all(5),
-                padding: const EdgeInsets.all(5),
-                color: Colors.amber,
-                width: 900,
-                height: 900,
-                child: const Image(
-                  image: NetworkImage(
-                      "https://cloud.jpnn.com/photo/arsip/normal/2021/12/10/film-animasi-my-little-pony-a-new-generation-akhirnya-tayang-ggj9.jpg"),
-                  fit: BoxFit.cover,
-                  // fit: BoxFit.contain,
-                  repeat: ImageRepeat.repeat,
-                ),
-              ),
-            ),
-             Flexible(
-               flex: 2,
-               child: Container(
-                margin: const EdgeInsets.all(5),
-                padding: const EdgeInsets.all(5),
-                color: Colors.amber,
-                width: 900,
-                height: 700,
-                child: const Image(
-                  image: AssetImage(
-                      "images/gbr1.jpg"),
-                  // fit: BoxFit.none,
-                  fit: BoxFit.fill,
-                  // repeat: ImageRepeat.repeat,
-                ),
-                         ),
-             ),
-          ],
-        ),
-      ),
+      home: LoginPage(),
     );
   }
 }
 
+//======================== 15 Draggable, Dragtarget, SizedBox, Material =====================
+// class MyApp extends StatefulWidget {
+//   const MyApp({Key? key}) : super(key: key);
+
+//   @override
+//   State<MyApp> createState() => _MyAppState();
+// }
+
+// class _MyAppState extends State<MyApp> {
+//   Color color1 = Colors.red;
+//   Color color2 = Colors.blue;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: const Text('Draggable, Dragtarget, SizedBox, Material'),
+//         ),
+//         body: Column(
+//             mainAxisAlignment: MainAxisAlignment.spaceAround,
+//             children: <Widget>[
+//               Row(
+//                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                 children: <Widget>[
+//                   //1
+//                   Draggable <Color>(
+//                     data: color1,
+//                     child: SizedBox(
+//                       width: 80,
+//                       height: 80,
+//                       child: Material(
+//                         color: color1,
+//                         shape: const StadiumBorder(),
+//                         elevation: 3,
+//                       ),
+//                     ),
+//                     childWhenDragging: const SizedBox(
+//                       width: 80,
+//                       height: 80,
+//                       child: Material(
+//                         color: Colors.black26,
+//                         shape: StadiumBorder(),
+//                         elevation: 0,
+//                       ),
+//                     ),
+//                     feedback: SizedBox(
+//                       width: 80,
+//                       height: 80,
+//                       child: Material(
+//                         color: color1.withOpacity(0.9),
+//                         shape: const StadiumBorder(),
+//                         elevation: 3,
+//                       ),
+//                     ),
+//                   ),
+//                   //2
+//                   Draggable <Color>(
+//                     data: color1,
+//                     child: SizedBox(
+//                       width: 80,
+//                       height: 80,
+//                       child: Material(
+//                         color: color1,
+//                         shape: const StadiumBorder(),
+//                         elevation: 3,
+//                       ),
+//                     ),
+//                     childWhenDragging: const SizedBox(
+//                       width: 80,
+//                       height: 80,
+//                       child: Material(
+//                         color: Colors.black26,
+//                         shape: StadiumBorder(),
+//                         elevation: 0,
+//                       ),
+//                     ),
+//                     feedback: SizedBox(
+//                       width: 80,
+//                       height: 80,
+//                       child: Material(
+//                         color: color1.withOpacity(0.9),
+//                         shape: const StadiumBorder(),
+//                         elevation: 3,
+//                       ),
+//                     ),
+//                   ),
+//                   //3
+//                   Draggable <Color>(
+//                     data: color1,
+//                     child: SizedBox(
+//                       width: 80,
+//                       height: 80,
+//                       child: Material(
+//                         color: color1,
+//                         shape: const StadiumBorder(),
+//                         elevation: 3,
+//                       ),
+//                     ),
+//                     childWhenDragging: const SizedBox(
+//                       width: 80,
+//                       height: 80,
+//                       child: Material(
+//                         color: Colors.black26,
+//                         shape: StadiumBorder(),
+//                         elevation: 0,
+//                       ),
+//                     ),
+//                     feedback: SizedBox(
+//                       width: 80,
+//                       height: 80,
+//                       child: Material(
+//                         color: color1.withOpacity(0.9),
+//                         shape: const StadiumBorder(),
+//                         elevation: 3,
+//                       ),
+//                     ),
+//                   ),
+//                 ],
+//               )
+//             ]),
+//       ),
+//     );
+//   }
+// }
+
+//======================== 14 Spacer Widget ====================================
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: const Text('Spacer Widget'),
+//         ),
+//         body: Center(
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: [
+//               Flexible(
+//                 child: Container(
+//                   child: Row(
+//                     children: <Widget>[
+//                       const Spacer(
+//                         flex: 1,
+//                       ),
+//                       Container(
+//                         width: 80,
+//                         height: 80,
+//                         color: Colors.green,
+//                       ),
+//                       const Spacer(
+//                         flex: 1,
+//                       ),
+//                       Container(
+//                         width: 80,
+//                         height: 80,
+//                         color: Colors.blue,
+//                       ),
+//                       const Spacer(
+//                         flex: 1,
+//                       ),
+//                       Container(
+//                         width: 80,
+//                         height: 80,
+//                         color: Colors.red,
+//                       ),
+//                       const Spacer(
+//                         flex: 1,
+//                       ),
+//                     ],
+//                   ),
+//                 ),
+//               ),
+//               Row(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: <Widget>[
+//                   Container(
+//                     margin: EdgeInsets.only(top: 10),
+//                     width: 80,
+//                     height: 80,
+//                     color: Colors.blueGrey,
+//                   ),
+//                 ],
+//               ),
+//               Row(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: <Widget>[
+//                   Container(
+//                     margin: EdgeInsets.only(top: 10),
+//                     width: 80,
+//                     height: 80,
+//                     color: Colors.purple,
+//                   ),
+//                 ],
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+//======================== 13 Image Widget =====================================
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: const Text('Latihan Image Widget'),
+//         ),
+//         body: Column(
+//           children: <Widget>[
+//             Flexible(
+//               flex: 2,
+//               child: Container(
+//                 margin: const EdgeInsets.all(5),
+//                 padding: const EdgeInsets.all(5),
+//                 color: Colors.amber,
+//                 width: 900,
+//                 height: 900,
+//                 child: const Image(
+//                   image: NetworkImage(
+//                       "https://cloud.jpnn.com/photo/arsip/normal/2021/12/10/film-animasi-my-little-pony-a-new-generation-akhirnya-tayang-ggj9.jpg"),
+//                   fit: BoxFit.cover,
+//                   // fit: BoxFit.contain,
+//                   repeat: ImageRepeat.repeat,
+//                 ),
+//               ),
+//             ),
+//              Flexible(
+//                flex: 2,
+//                child: Container(
+//                 margin: const EdgeInsets.all(5),
+//                 padding: const EdgeInsets.all(5),
+//                 color: Colors.amber,
+//                 width: 900,
+//                 height: 700,
+//                 child: const Image(
+//                   image: AssetImage(
+//                       "images/gbr1.jpg"),
+//                   // fit: BoxFit.none,
+//                   fit: BoxFit.fill,
+//                   // repeat: ImageRepeat.repeat,
+//                 ),
+//                          ),
+//              ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+//================= 09 List View ====================
+// class MyApp extends StatefulWidget {
+//   const MyApp({Key? key}) : super(key: key);
+
+//   @override
+//   State<MyApp> createState() => _MyAppState();
+// }
+
+// class _MyAppState extends State<MyApp> {
+//   List<Widget> widgets = [];
+//   int counter = 1;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text('List View'),
+//         ),
+//         body: ListView(
+//           children: <Widget>[
+//             Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceAround,
+//               children: [
+//                 ElevatedButton(
+//                   child: Text("Tambah Data"),
+//                   onPressed: () {
+//                     setState(() {
+//                       widgets.add(Text(
+//                         "Data Ke-" + counter.toString(),
+//                         style: TextStyle(fontSize: 25, fontFamily: ("BebasNeue-Regular")),
+//                       ));
+//                       counter++;
+//                     });
+//                   },
+//                 ),
+//                 ElevatedButton(
+//                   child: Text("Hapus Data"),
+//                   onPressed: () {
+//                     setState(() {
+//                       widgets.removeLast();
+//                       counter--;
+//                     });
+//                   },
+//                 ),
+//               ],
+//             ),
+//             Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: widgets,
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 //================= 08 Text Style ====================
 // class MyApp extends StatelessWidget {
@@ -78,13 +354,12 @@ class MyApp extends StatelessWidget {
 //             style: TextStyle(
 //                 fontFamily: "BebasNeue-Regular", fontStyle: FontStyle.italic),
 //           ),
-          
+
 //         ),
 //       ),
 //     );
 //   }
 // }
-
 
 //=================== 07 Anonymous Method ==================
 // class MyApp extends StatefulWidget {
