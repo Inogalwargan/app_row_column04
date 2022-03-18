@@ -280,6 +280,338 @@ class MyApp extends StatelessWidget {
 //   }
 // }
 
+//========================= 12 Stack & Align =============================
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//         home: Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Belajar Stack & Align'),
+//       ),
+//       body: Stack(
+//         children: <Widget>[
+//           //Background
+//           Column(
+//             children: <Widget>[
+//               Flexible(
+//                 flex: 1,
+//                 child: Row(
+//                   children: <Widget>[
+//                     Flexible(
+//                       flex: 1,
+//                       child: Container(
+//                         margin: const EdgeInsets.all(5),
+//                         color: Colors.yellow,
+//                       ),
+//                     ),
+//                     Flexible(
+//                       flex: 1,
+//                       child: Container(
+//                         margin: const EdgeInsets.all(5),
+//                         color: Colors.red,
+//                       ),
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//               Flexible(
+//                 flex: 1,
+//                 child: Row(
+//                   children: <Widget>[
+//                     Flexible(
+//                       flex: 1,
+//                       child: Container(
+//                         margin: const EdgeInsets.all(5),
+//                         color: Colors.blue,
+//                       ),
+//                     ),
+//                     Flexible(
+//                       flex: 1,
+//                       child: Container(
+//                         margin: const EdgeInsets.all(5),
+//                         color: Colors.green,
+//                       ),
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ],
+//           ),
+//           //listview dengan text
+//           ListView(
+//             children: <Widget>[
+//               Container(
+//                 margin: const EdgeInsets.all(10),
+//                 child: const Text(
+//                   "Ini Adalah Text yang ada di lapisan tengah dari stack",
+//                   style:
+//                       TextStyle(fontSize: 30, fontFamily: "BebasNeue-Regular"),
+//                 ),
+//               ),
+//               Container(
+//                 margin: const EdgeInsets.all(10),
+//                 child: const Text(
+//                   "Ini Adalah Text yang ada di lapisan tengah dari stack",
+//                   style: TextStyle(fontSize: 30),
+//                 ),
+//               ),
+//               Container(
+//                 margin: const EdgeInsets.all(10),
+//                 child: const Text(
+//                   "Ini Adalah Text yang ada di lapisan tengah dari stack",
+//                   style: TextStyle(fontSize: 30),
+//                 ),
+//               ),
+//               Container(
+//                 margin: const EdgeInsets.all(10),
+//                 child: const Text(
+//                   "Ini Adalah Text yang ada di lapisan tengah dari stack",
+//                   style: TextStyle(fontSize: 30),
+//                 ),
+//               ),
+//               Container(
+//                 margin: const EdgeInsets.all(10),
+//                 child: const Text(
+//                   "Ini Adalah Text yang ada di lapisan tengah dari stack",
+//                   style: TextStyle(fontSize: 30),
+//                 ),
+//               ),
+//               Container(
+//                 margin: const EdgeInsets.all(10),
+//                 child: const Text(
+//                   "Ini Adalah Text yang ada di lapisan tengah dari stack",
+//                   style: TextStyle(fontSize: 30),
+//                 ),
+//               ),
+//               Container(
+//                 margin: const EdgeInsets.all(10),
+//                 child: const Text(
+//                   "Ini Adalah Text yang ada di lapisan tengah dari stack",
+//                   style: TextStyle(fontSize: 30),
+//                 ),
+//               ),
+//               Container(
+//                 margin: const EdgeInsets.all(10),
+//                 child: const Text(
+//                   "Ini Adalah Text yang ada di lapisan tengah dari stack",
+//                   style: TextStyle(fontSize: 30),
+//                 ),
+//               ),
+//               Container(
+//                 margin: const EdgeInsets.all(10),
+//                 child: const Text(
+//                   "Ini Adalah Text yang ada di lapisan tengah dari stack",
+//                   style: TextStyle(fontSize: 30),
+//                 ),
+//               ),
+//             ],
+//           ),
+//           //Button
+//           Align(
+//             alignment: Alignment.bottomCenter,
+//             child: ElevatedButton(
+//               onPressed: () {},
+//               style: ElevatedButton.styleFrom(
+//                 primary: Colors.blueGrey,
+//                 onPrimary: Colors.grey,
+//                 elevation: 80, // Elevation
+//                 shadowColor: Colors.red, // Shadow Color
+//               ),
+//               child: const Text(
+//                 'My button',
+//                 style: TextStyle(fontSize: 30),
+//               ),
+//             ),
+//           )
+//         ],
+//       ),
+//     ));
+//   }
+// }
+
+//======================== 11 Flexible Widget ===========================
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text('Flexible Widget'),
+//         ),
+//         body: Column(
+//           children: <Widget>[
+//             Flexible(
+//               flex: 1,
+//               child: Row(
+//                 children: <Widget>[
+//                   Flexible(
+//                     flex: 1,
+//                     child: Container(
+//                       margin: EdgeInsets.all(5),
+//                       color: Colors.red,
+//                     ),
+//                   ),
+//                   Flexible(
+//                     flex: 1,
+//                     child: Container(
+//                       margin: EdgeInsets.all(5),
+//                       color: Colors.green,
+//                     ),
+//                   ),
+//                   Flexible(
+//                     flex: 1,
+//                     child: Container(
+//                       margin: EdgeInsets.all(5),
+//                       color: Colors.purple,
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//             Flexible(
+//               flex: 1,
+//               child: Row(
+//                 children: <Widget>[
+//                   Flexible(
+//                     flex: 1,
+//                     child: Container(
+//                       margin: EdgeInsets.all(5),
+//                       color: Colors.red,
+//                     ),
+//                   ),
+//                   Flexible(
+//                     flex: 1,
+//                     child: Container(
+//                       margin: EdgeInsets.all(5),
+//                       color: Colors.blue,
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//             Flexible(
+//               flex: 1,
+//               child: Row(
+//                 children: <Widget>[
+//                   Flexible(
+//                     flex: 1,
+//                     child: Container(
+//                       margin: EdgeInsets.all(5),
+//                       color: Colors.blueGrey,
+//                     ),
+//                   ),
+//                   Flexible(
+//                     flex: 1,
+//                     child: Container(
+//                       margin: EdgeInsets.all(5),
+//                       color: Colors.blueGrey,
+//                     ),
+//                   ),
+//                   Flexible(
+//                     flex: 1,
+//                     child: Container(
+//                       margin: EdgeInsets.all(5),
+//                       color: Colors.blueGrey,
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//             Flexible(
+//               flex: 1,
+//               child: Row(
+//                 children: <Widget>[
+//                   Flexible(
+//                     flex: 1,
+//                     child: Container(
+//                       color: Colors.blue,
+//                       margin: EdgeInsets.all(5),
+//                     ),
+//                   ),
+//                   Flexible(
+//                     flex: 1,
+//                     child: Container(
+//                       color: Colors.amber,
+//                       margin: EdgeInsets.all(5),
+//                     ),
+//                   ),
+//                   Flexible(
+//                     flex: 1,
+//                     child: Container(
+//                       color: Colors.greenAccent,
+//                       margin: EdgeInsets.all(5),
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             )
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+//======================== 10 Animated Container ========================
+// class MyApp extends StatefulWidget {
+//   const MyApp({Key? key}) : super(key: key);
+
+//   @override
+//   State<MyApp> createState() => _MyAppState();
+// }
+
+// class _MyAppState extends State<MyApp> {
+//   Random random = Random();
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text('Belajar Flutter'),
+//         ),
+//         body: Center(
+//           child: GestureDetector(
+//             onTap: () {
+//               setState(() {});
+//             },
+//             child: AnimatedContainer(
+//               color: Color.fromARGB(255, random.nextInt(256),
+//                   random.nextInt(256), random.nextInt(256)),
+//               duration: Duration(seconds: 1),
+//               width: 50.0 + random.nextInt(101),
+//               height: 50.0 + random.nextInt(101),
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text('Belajar Flutter'),
+//         ),
+//         body: Center(
+//           child: Text('Ini Bodys'),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
 //================= 09 List View ====================
 // class MyApp extends StatefulWidget {
 //   const MyApp({Key? key}) : super(key: key);
