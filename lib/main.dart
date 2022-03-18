@@ -17,18 +17,43 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Latihan Image Widget'),
         ),
-        body: Center(
-          child: Container(
-            color: Colors.amber,
-            width: 200,
-            height: 200,
-            padding: const EdgeInsets.all(3),
-            child: const Image(
-              image: NetworkImage(
-                  "https://cloud.jpnn.com/photo/arsip/normal/2021/12/10/film-animasi-my-little-pony-a-new-generation-akhirnya-tayang-ggj9.jpg"),
-                  fit: BoxFit.none,
+        body: Column(
+          children: <Widget>[
+            Flexible(
+              flex: 2,
+              child: Container(
+                margin: const EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
+                color: Colors.amber,
+                width: 900,
+                height: 900,
+                child: const Image(
+                  image: NetworkImage(
+                      "https://cloud.jpnn.com/photo/arsip/normal/2021/12/10/film-animasi-my-little-pony-a-new-generation-akhirnya-tayang-ggj9.jpg"),
+                  fit: BoxFit.cover,
+                  // fit: BoxFit.contain,
+                  repeat: ImageRepeat.repeat,
+                ),
+              ),
             ),
-          ),
+             Flexible(
+               flex: 2,
+               child: Container(
+                margin: const EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
+                color: Colors.amber,
+                width: 900,
+                height: 700,
+                child: const Image(
+                  image: AssetImage(
+                      "images/gbr1.jpg"),
+                  // fit: BoxFit.none,
+                  fit: BoxFit.fill,
+                  // repeat: ImageRepeat.repeat,
+                ),
+                         ),
+             ),
+          ],
         ),
       ),
     );
