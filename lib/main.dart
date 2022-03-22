@@ -8,7 +8,7 @@ void main() {
   runApp(MyApp());
 }
 
-//======================= 21 InkWell (Buat Button sendiri) =====================
+//======================= 22 InkWell (Buat Button sendiri) =====================
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-//======================== 20 Media Query ================================
+//======================== 21 Media Query ================================
 // class MyApp extends StatelessWidget {
 //   // const MyApp({ Key? key }) : super(key: key);
 
