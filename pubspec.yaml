@@ -61,6 +61,7 @@ flutter:
   assets:
     - images/gbr1.jpg
     - images/gbr2.jpg
+    - images/pattern.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
