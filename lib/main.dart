@@ -5,174 +5,355 @@ import 'package:app_row_column04/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-//=========================== 18 Card Widget ===================================
+//======================= 21 InkWell (Buat Button sendiri) =====================
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.green,
-        body: Container(
-          margin: const EdgeInsets.all(10),
-          child: ListView(
+        appBar: AppBar(
+          title: Text("Latihan InkWell"),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              buildCard(Icons.payment_sharp, "Payment"),
-              buildCard(Icons.request_page_sharp, "Request"),
-              buildCard(Icons.wallet_giftcard_sharp, "Top Up"),
-              buildCard(Icons.wallet_membership, "Rewards"),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    child: Card(
-                      elevation: 5,
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            margin: EdgeInsets.all(20),
-                            child: Row(
-                              children: <Widget>[
-                                FlexibleBuilder(
-                                    Icons.payment_rounded, "Payment"),
-                                const Spacer(
-                                  flex: 1,
-                                ),
-                                FlexibleBuilder(
-                                    Icons.question_answer, "Request"),
-                                const Spacer(
-                                  flex: 1,
-                                ),
-                                FlexibleBuilder(Icons.money_sharp, "Top Up"),
-                                const Spacer(
-                                  flex: 1,
-                                ),
-                                FlexibleBuilder(
-                                    Icons.wallet_membership, "Rewards"),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(5, 20, 5, 20),
-                    child: const Text(
-                      "Recent Activity",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w700, color: Colors.black45),
-                    ),
-                  ),
-                  cardBuilderThree("Top Up", "Using Online Banking", "20.000"),
-                  cardBuilderThree(
-                      "Ride", "Booking ID: ADR-34501982", "11.000"),
-                  cardBuilderThree(
-                      "Ride", "Booking ID: ADR-17384754", "32.000"),
-                  cardBuilderThree("Grab Food", "McD Darmo", "52.000"),
-                ],
+              RaisedButton(
+                color: Colors.amber,
+                child: Text("Raised Button"),
+                onPressed: () {},
+                shape: StadiumBorder(),
               ),
+              Material(
+                elevation: 5,
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  width: 150,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: LinearGradient(
+                        colors: [Colors.purple, Colors.pink],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter),
+                  ),
+                  child: Material(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.transparent,
+                    child: InkWell(
+                      splashColor: Colors.amber,
+                      onTap: () {},
+                      borderRadius: BorderRadius.circular(20),
+                      child: Center(
+                          child: Text(
+                        "My Button",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.w600),
+                      )),
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),
       ),
     );
   }
-
-  Container cardBuilderThree(
-      String textJudul, String textDeskripsi, String textBiaya) {
-    return Container(
-      child: Card(
-        elevation: 20,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                          child: Text(
-                            textJudul,
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        // Row(child: Icon(Icons.arrow_back_ios_new)),
-                      ],
-                    ),
-                  ),
-                  Text(
-                    textDeskripsi,
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              child: Row(
-                children: <Widget>[
-                  Icon(Icons.arrow_back_ios),
-                  Text(textBiaya),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Flexible FlexibleBuilder(IconData iconData, String text) {
-    return Flexible(
-      child: Column(
-        children: <Widget>[
-          Icon(
-            iconData,
-            color: Colors.black54,
-          ),
-          Text(
-            text,
-            style: TextStyle(
-                fontFamily: "BebasNeue-Regular",
-                fontSize: 15,
-                color: Colors.black38),
-          )
-        ],
-      ),
-    );
-  }
-
-  Card buildCard(IconData iconData, String text) {
-    return Card(
-      elevation: 5,
-      child: Row(
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.all(5),
-            child: Icon(
-              iconData,
-              color: Colors.blueGrey,
-            ),
-          ),
-          Text(
-            text,
-            style: TextStyle(fontWeight: FontWeight.w700),
-          )
-        ],
-      ),
-    );
-  }
 }
+
+//======================== 20 Media Query ================================
+// class MyApp extends StatelessWidget {
+//   // const MyApp({ Key? key }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: MainPage(),
+//     );
+//   }
+// }
+
+// class MainPage extends StatelessWidget {
+//   // const MainPage({ Key? key }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text("Media Query"),
+//       ),
+//       body: (MediaQuery.of(context).orientation == Orientation.portrait)
+//           ? Column(
+//               children: generateContainers(),
+//             )
+//           : Row(
+//               children: generateContainers(),
+//             ),
+//       // body: Container(
+//       //   color: Colors.red,
+//       //   width: MediaQuery.of(context).size.width / 3,
+//       //   height: MediaQuery.of(context).size.height / 2,
+//       // ),
+//     );
+//   }
+
+//   List<Widget> generateContainers() {
+//     return <Widget>[
+//       Container(
+//         color: Colors.red,
+//         width: 100,
+//         height: 100,
+//       ),
+//       Container(
+//         color: Colors.green,
+//         width: 100,
+//         height: 100,
+//       ),
+//       Container(
+//         color: Colors.blue,
+//         width: 100,
+//         height: 100,
+//       ),
+//       Container(
+//         color: Colors.yellow,
+//         width: 100,
+//         height: 100,
+//       ),
+//     ];
+//   }
+// }
+
+//======================== 19 Textfield Widget & 20 Textfield(Decoration) =================================
+// class MyApp extends StatefulWidget {
+//   // const MyApp({Key? key}) : super(key: key);
+
+//   @override
+//   State<MyApp> createState() => _MyAppState();
+// }
+
+// class _MyAppState extends State<MyApp> {
+//   TextEditingController controller = TextEditingController();
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text("App bar"),
+//         ),
+//         body: Container(
+//           margin: EdgeInsets.all(20),
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.spaceAround,
+//             children: <Widget>[
+//               TextField(
+//                 decoration: InputDecoration(
+//                   fillColor: Colors.lightBlue[50],
+//                   filled: true,
+//                   suffix: Container(
+//                     width: 5,
+//                     height: 5,
+//                     color: Colors.red,
+//                   ),
+//                   icon: Icon(Icons.ac_unit),
+//                   prefixIcon: Icon(Icons.person),
+//                   prefixText: "Name :",
+//                   prefixStyle: TextStyle(
+//                       color: Colors.blue, fontWeight: FontWeight.w600),
+//                   labelText: "Nama Lengkap",
+//                   // labelStyle: TextStyle(color: Colors.green),
+//                   hintText: "Tulis nama anda",
+//                   hintStyle: TextStyle(color: Colors.green),
+//                   border: OutlineInputBorder(
+//                     borderRadius: BorderRadius.circular(10),
+//                   ),
+//                 ),
+//                 // decoration: InputDecoration(border: InputBorder.none),
+//                 // obscureText: true,
+//                 maxLength: 5,
+//                 onChanged: (nilai_textfield) {
+//                   setState(() {});
+//                 },
+//                 controller: controller,
+//               ),
+//               Text(controller.text)
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+//=========================== 18 Card Widget ===================================
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         backgroundColor: Colors.green,
+//         body: Container(
+//           margin: const EdgeInsets.all(10),
+//           child: ListView(
+//             children: <Widget>[
+//               buildCard(Icons.payment_sharp, "Payment"),
+//               buildCard(Icons.request_page_sharp, "Request"),
+//               buildCard(Icons.wallet_giftcard_sharp, "Top Up"),
+//               buildCard(Icons.wallet_membership, "Rewards"),
+//               Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: <Widget>[
+//                   Container(
+//                     child: Card(
+//                       elevation: 5,
+//                       child: Column(
+//                         children: <Widget>[
+//                           Container(
+//                             margin: EdgeInsets.all(20),
+//                             child: Row(
+//                               children: <Widget>[
+//                                 FlexibleBuilder(
+//                                     Icons.payment_rounded, "Payment"),
+//                                 const Spacer(
+//                                   flex: 1,
+//                                 ),
+//                                 FlexibleBuilder(
+//                                     Icons.question_answer, "Request"),
+//                                 const Spacer(
+//                                   flex: 1,
+//                                 ),
+//                                 FlexibleBuilder(Icons.money_sharp, "Top Up"),
+//                                 const Spacer(
+//                                   flex: 1,
+//                                 ),
+//                                 FlexibleBuilder(
+//                                     Icons.wallet_membership, "Rewards"),
+//                               ],
+//                             ),
+//                           ),
+//                         ],
+//                       ),
+//                     ),
+//                   ),
+//                   Container(
+//                     margin: const EdgeInsets.fromLTRB(5, 20, 5, 20),
+//                     child: const Text(
+//                       "Recent Activity",
+//                       style: TextStyle(
+//                           fontWeight: FontWeight.w700, color: Colors.black45),
+//                     ),
+//                   ),
+//                   cardBuilderThree("Top Up", "Using Online Banking", "20.000"),
+//                   cardBuilderThree(
+//                       "Ride", "Booking ID: ADR-34501982", "11.000"),
+//                   cardBuilderThree(
+//                       "Ride", "Booking ID: ADR-17384754", "32.000"),
+//                   cardBuilderThree("Grab Food", "McD Darmo", "52.000"),
+//                 ],
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+
+//   Container cardBuilderThree(
+//       String textJudul, String textDeskripsi, String textBiaya) {
+//     return Container(
+//       child: Card(
+//         elevation: 20,
+//         child: Row(
+//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//           children: <Widget>[
+//             Container(
+//               margin: EdgeInsets.all(10),
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: <Widget>[
+//                   Container(
+//                     child: Row(
+//                       children: <Widget>[
+//                         Container(
+//                           child: Text(
+//                             textJudul,
+//                             style: TextStyle(
+//                                 fontSize: 18, fontWeight: FontWeight.bold),
+//                           ),
+//                         ),
+//                         // Row(child: Icon(Icons.arrow_back_ios_new)),
+//                       ],
+//                     ),
+//                   ),
+//                   Text(
+//                     textDeskripsi,
+//                     style: TextStyle(color: Colors.grey),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//             Container(
+//               margin: EdgeInsets.all(10),
+//               child: Row(
+//                 children: <Widget>[
+//                   Icon(Icons.arrow_back_ios),
+//                   Text(textBiaya),
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+
+//   Flexible FlexibleBuilder(IconData iconData, String text) {
+//     return Flexible(
+//       child: Column(
+//         children: <Widget>[
+//           Icon(
+//             iconData,
+//             color: Colors.black54,
+//           ),
+//           Text(
+//             text,
+//             style: TextStyle(
+//                 fontFamily: "BebasNeue-Regular",
+//                 fontSize: 15,
+//                 color: Colors.black38),
+//           )
+//         ],
+//       ),
+//     );
+//   }
+
+//   Card buildCard(IconData iconData, String text) {
+//     return Card(
+//       elevation: 5,
+//       child: Row(
+//         children: <Widget>[
+//           Container(
+//             margin: EdgeInsets.all(5),
+//             child: Icon(
+//               iconData,
+//               color: Colors.blueGrey,
+//             ),
+//           ),
+//           Text(
+//             text,
+//             style: TextStyle(fontWeight: FontWeight.w700),
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 //====================== 17 App Bar Gradasi Dengan Corak =====================
 // class MyApp extends StatelessWidget {
