@@ -2,68 +2,204 @@ import 'dart:developer';
 import 'dart:ui';
 
 import 'package:app_row_column04/login_page.dart';
+import 'package:app_row_column04/main_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-//======================= 22 InkWell (Buat Button sendiri) =====================
+//====================== 23 Opacity (Custom Card dengan latar bercorak) =========================
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Latihan InkWell"),
+      home: MainPage(),
+    );
+  }
+}
+
+class MainPage extends StatelessWidget {
+  const MainPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Custom Card Example",
+          style: TextStyle(color: Colors.white),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              RaisedButton(
-                color: Colors.amber,
-                child: Text("Raised Button"),
-                onPressed: () {},
-                shape: StadiumBorder(),
+        backgroundColor: Color.fromARGB(255, 139, 0, 53),
+      ),
+      body: Stack(
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.pink, Color.fromARGB(255, 243, 63, 189)],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
               ),
-              Material(
-                elevation: 5,
-                borderRadius: BorderRadius.circular(20),
-                child: Container(
-                  width: 150,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    gradient: LinearGradient(
-                        colors: [Colors.purple, Colors.pink],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter),
-                  ),
-                  child: Material(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.transparent,
-                    child: InkWell(
-                      splashColor: Colors.amber,
-                      onTap: () {},
-                      borderRadius: BorderRadius.circular(20),
-                      child: Center(
-                          child: Text(
-                        "My Button",
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w600),
-                      )),
-                    ),
-                  ),
-                ),
-              )
-            ],
+            ),
           ),
-        ),
+          Center(
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: MediaQuery.of(context).size.height * 0.7,
+              child: Card(
+                elevation: 10,
+                child: Stack(
+                  children: <Widget>[
+                    Opacity(
+                      opacity: 0.7,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          image: const DecorationImage(
+                            image: NetworkImage(
+                                "https://img.freepik.com/free-vector/abstract-organic-lines-background_1017-26669.jpg?w=1380&t=st=1648026679~exp=1648027279~hmac=52452615bddfae7a98b170524a4b682dede7816b607e02268b4995e4487099c5"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.width * 0.75,
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(4)),
+                        image: DecorationImage(
+                            image: NetworkImage(
+                                "https://images.unsplash.com/photo-1640622299541-8c8ab8a098f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80"),
+                            fit: BoxFit.cover),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(
+                          20,
+                          50 + MediaQuery.of(context).size.height * 0.35,
+                          20,
+                          20),
+                      child: Column(
+                        children: <Widget>[
+                          const Text(
+                            "Beautiful painting On afternoon",
+                            maxLines: 2,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Color(0xfff56d56), fontSize: 25),
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 20, 0, 15),
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Text(
+                                    "Posting On",
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 12),
+                                  ),
+                                  Text(
+                                    "August 15, 2022",
+                                    style: TextStyle(
+                                        color: Color(0xfff56d56), fontSize: 12),
+                                  ),
+                                ]),
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Spacer(flex: 10,),
+                              //Icon
+                              Icon(Icons.thumb_up_outlined, size: 18, color: Colors.green,),
+                              Spacer(flex: 1),
+                              //Text
+                              Text("999", style: TextStyle(color: Colors.green),),
+                              Spacer(flex: 5,),
+                              //Icon
+                              Icon(Icons.comment, size: 18, color: Colors.green,),
+                              Spacer(flex: 1,),
+                              //Text
+                               Text("999", style: TextStyle(color: Colors.green),),
+                              Spacer(flex: 10,),
+                            ],
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
 }
+
+//======================= 22 InkWell (Buat Button sendiri) =====================
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text("Latihan InkWell"),
+//         ),
+//         body: Center(
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.spaceAround,
+//             children: <Widget>[
+//               RaisedButton(
+//                 color: Colors.amber,
+//                 child: Text("Raised Button"),
+//                 onPressed: () {},
+//                 shape: StadiumBorder(),
+//               ),
+//               Material(
+//                 elevation: 5,
+//                 borderRadius: BorderRadius.circular(20),
+//                 child: Container(
+//                   width: 150,
+//                   height: 40,
+//                   decoration: BoxDecoration(
+//                     borderRadius: BorderRadius.circular(20),
+//                     gradient: LinearGradient(
+//                         colors: [Colors.purple, Colors.pink],
+//                         begin: Alignment.topCenter,
+//                         end: Alignment.bottomCenter),
+//                   ),
+//                   child: Material(
+//                     borderRadius: BorderRadius.circular(20),
+//                     color: Colors.transparent,
+//                     child: InkWell(
+//                       splashColor: Colors.amber,
+//                       onTap: () {},
+//                       borderRadius: BorderRadius.circular(20),
+//                       child: Center(
+//                         child: Text(
+//                           "My Buttonss",
+//                           style: TextStyle(
+//                               color: Colors.white, fontWeight: FontWeight.w600),
+//                         ),
+//                       ),
+//                     ),
+//                   ),
+
+                  
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 //======================== 21 Media Query ================================
 // class MyApp extends StatelessWidget {
