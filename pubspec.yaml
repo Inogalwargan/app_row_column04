@@ -62,6 +62,10 @@ flutter:
     - images/gbr1.jpg
     - images/gbr2.jpg
     - images/pattern.png
+    - images/facebook.png
+    - images/twitter.png
+    - images/instagram.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -76,9 +80,13 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: BebasNeue-Regular
+    - family: Pacifico-Regular
       fonts:
-        - asset: fonts/BebasNeue-Regular.ttf
+        - asset: fonts/Pacifico-Regular.ttf
+  # fonts:
+  #   - family: BebasNeue-Regular
+  #     fonts:
+  #       - asset: fonts/BebasNeue-Regular.ttf
         
   
 # fonts:

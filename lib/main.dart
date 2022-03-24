@@ -1,145 +1,391 @@
 import 'dart:developer';
+// import 'dart:html';
 import 'dart:ui';
 
 import 'package:app_row_column04/login_page.dart';
 import 'package:app_row_column04/main_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
-//====================== 23 Opacity (Custom Card dengan latar bercorak) =========================
+// void main() {
+//   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+//       .then((value) => runApp(MyApp()));
+// }
+
+//===================== 24 Positioned, Floating ActionButton, LoginPage =========================
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+      ]);
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MainPage(),
     );
   }
 }
 
 class MainPage extends StatelessWidget {
+  double getSmallDiameter(BuildContext context) =>
+      MediaQuery.of(context).size.width * 2 / 3;
+  double getBigDiameter(BuildContext context) =>
+      MediaQuery.of(context).size.height * 4 / 8;
+
   const MainPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Custom Card Example",
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: Color.fromARGB(255, 139, 0, 53),
-      ),
+      backgroundColor: Color.fromARGB(255, 223, 221, 222),
       body: Stack(
         children: <Widget>[
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Colors.pink, Color.fromARGB(255, 243, 63, 189)],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
+          Positioned(
+            right: -getSmallDiameter(context) / 3,
+            top: -getSmallDiameter(context) / 3,
+            child: Container(
+              width: getSmallDiameter(context),
+              height: getSmallDiameter(context),
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: LinearGradient(
+                      colors: [Color(0xffb226b2), Color(0xffff6da7)],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter)),
+            ),
+          ),
+          Positioned(
+            left: -getBigDiameter(context) / 4,
+            top: -getBigDiameter(context) / 4,
+            child: Container(
+              child: Center(
+                  child: Text(
+                "dribblee",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: "Pacifico-Regular",
+                    fontSize: 30),
+              )),
+              width: getBigDiameter(context),
+              height: getBigDiameter(context),
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: LinearGradient(
+                      colors: [Color(0xffb226b2), Color(0xffff4891)],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter)),
+            ),
+          ),
+          Positioned(
+            right: -getBigDiameter(context) / 2,
+            bottom: -getBigDiameter(context) / 2,
+            child: Container(
+              width: getBigDiameter(context),
+              height: getBigDiameter(context),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Color.fromARGB(255, 223, 221, 222),
               ),
             ),
           ),
-          Center(
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: MediaQuery.of(context).size.height * 0.7,
-              child: Card(
-                elevation: 10,
-                child: Stack(
+          //Align agar lisview ke bawah
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: ListView(children: <Widget>[
+              //untuk setting inputan email dan password
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                margin: EdgeInsets.fromLTRB(20, 300, 20, 10),
+                padding: EdgeInsets.fromLTRB(10, 0, 10, 25),
+                child: Column(
                   children: <Widget>[
-                    Opacity(
-                      opacity: 0.7,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          image: const DecorationImage(
-                            image: NetworkImage(
-                                "https://img.freepik.com/free-vector/abstract-organic-lines-background_1017-26669.jpg?w=1380&t=st=1648026679~exp=1648027279~hmac=52452615bddfae7a98b170524a4b682dede7816b607e02268b4995e4487099c5"),
-                            fit: BoxFit.cover,
+                    TextField(
+                      decoration: InputDecoration(
+                          icon: Icon(
+                            Icons.email,
+                            color: Color(0xFFFF4891),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                            color: Color(0xFFFF4891),
+                          )),
+                          labelText: "Email",
+                          labelStyle: TextStyle(
+                            color: Color(0xFFFF4891),
+                          )),
+                    ),
+                    TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        icon: Icon(
+                          Icons.vpn_key,
+                          color: Color(0xFFFF4891),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFFFF4891),
                           ),
                         ),
-                      ),
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.width * 0.75,
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(4)),
-                        image: DecorationImage(
-                            image: NetworkImage(
-                                "https://images.unsplash.com/photo-1640622299541-8c8ab8a098f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80"),
-                            fit: BoxFit.cover),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(
-                          20,
-                          50 + MediaQuery.of(context).size.height * 0.35,
-                          20,
-                          20),
-                      child: Column(
-                        children: <Widget>[
-                          const Text(
-                            "Beautiful painting On afternoon",
-                            maxLines: 2,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Color(0xfff56d56), fontSize: 25),
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(0, 20, 0, 15),
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Text(
-                                    "Posting On",
-                                    style: TextStyle(
-                                        color: Colors.grey, fontSize: 12),
-                                  ),
-                                  Text(
-                                    "August 15, 2022",
-                                    style: TextStyle(
-                                        color: Color(0xfff56d56), fontSize: 12),
-                                  ),
-                                ]),
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Spacer(flex: 10,),
-                              //Icon
-                              Icon(Icons.thumb_up_outlined, size: 18, color: Colors.green,),
-                              Spacer(flex: 1),
-                              //Text
-                              Text("999", style: TextStyle(color: Colors.green),),
-                              Spacer(flex: 5,),
-                              //Icon
-                              Icon(Icons.comment, size: 18, color: Colors.green,),
-                              Spacer(flex: 1,),
-                              //Text
-                               Text("999", style: TextStyle(color: Colors.green),),
-                              Spacer(flex: 10,),
-                            ],
-                          )
-                        ],
+                        labelText: "Password: ",
+                        labelStyle: TextStyle(
+                          color: Color(0xFFFF4891),
+                        ),
                       ),
                     )
                   ],
                 ),
               ),
-            ),
+              //For Forgot Password
+              Align(
+                alignment: Alignment.centerRight,
+                child: Container(
+                  margin: EdgeInsets.fromLTRB(0, 0, 20, 20),
+                  child: Text(
+                    "Forgot Password?",
+                    style: TextStyle(
+                      color: Color(0xFFFF4891),
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ),
+              //For Button SIGN IN, Instagram & Facebook
+              Container(
+                margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      height: 40,
+                      child: Container(
+                        child: Material(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.transparent,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(20),
+                            splashColor: Colors.amber,
+                            onTap: () {},
+                            child: Center(
+                              child: Text(
+                                "SIGN IN",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w700),
+                              ),
+                            ),
+                          ),
+                        ),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            gradient: LinearGradient(
+                                colors: [
+                                  Color(0xffb226b2),
+                                  Color(0xffff4891),
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter)),
+                      ),
+                    ),
+                    Spacer(
+                      flex: 1,
+                    ),
+                    FloatingActionButton(
+                      onPressed: () {},
+                      elevation: 0,
+                      mini: true,
+                      child: Image(
+                        image: AssetImage("images/instagram.png"),
+                      ),
+                    ),
+                    Spacer(
+                      flex: 1,
+                    ),
+                    FloatingActionButton(
+                      onPressed: () {},
+                      elevation: 0,
+                      mini: true,
+                      child: Image(
+                        image: AssetImage("images/facebook.png"),
+                      ),
+                    ),
+                    Spacer(
+                      flex: 1,
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 50),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      "DONT HAVE AN ACCOUNT?",
+                      style: TextStyle(
+                          fontSize: 11,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    Text(
+                      "SIGN UP",
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: Color(0xffff4891),
+                          fontWeight: FontWeight.w700),
+                    ),
+                  ],
+                ),
+              ),
+            ]),
           )
         ],
       ),
     );
   }
 }
+
+//====================== 23 Opacity (Custom Card dengan latar bercorak) =========================
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: MainPage(),
+//     );
+//   }
+// }
+
+// class MainPage extends StatelessWidget {
+//   const MainPage({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text(
+//           "Custom Card Example",
+//           style: TextStyle(color: Colors.white),
+//         ),
+//         backgroundColor: Color.fromARGB(255, 139, 0, 53),
+//       ),
+//       body: Stack(
+//         children: <Widget>[
+//           Container(
+//             decoration: BoxDecoration(
+//               gradient: LinearGradient(
+//                 colors: [Colors.pink, Color.fromARGB(255, 243, 63, 189)],
+//                 begin: Alignment.topCenter,
+//                 end: Alignment.bottomCenter,
+//               ),
+//             ),
+//           ),
+//           Center(
+//             child: SizedBox(
+//               width: MediaQuery.of(context).size.width * 0.8,
+//               height: MediaQuery.of(context).size.height * 0.7,
+//               child: Card(
+//                 elevation: 10,
+//                 child: Stack(
+//                   children: <Widget>[
+//                     Opacity(
+//                       opacity: 0.7,
+//                       child: Container(
+//                         decoration: BoxDecoration(
+//                           borderRadius: BorderRadius.circular(4),
+//                           image: const DecorationImage(
+//                             image: NetworkImage(
+//                                 "https://img.freepik.com/free-vector/abstract-organic-lines-background_1017-26669.jpg?w=1380&t=st=1648026679~exp=1648027279~hmac=52452615bddfae7a98b170524a4b682dede7816b607e02268b4995e4487099c5"),
+//                             fit: BoxFit.cover,
+//                           ),
+//                         ),
+//                       ),
+//                     ),
+//                     Container(
+//                       height: MediaQuery.of(context).size.width * 0.75,
+//                       decoration: const BoxDecoration(
+//                         borderRadius: BorderRadius.only(
+//                             topLeft: Radius.circular(10),
+//                             topRight: Radius.circular(4)),
+//                         image: DecorationImage(
+//                             image: NetworkImage(
+//                                 "https://images.unsplash.com/photo-1640622299541-8c8ab8a098f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80"),
+//                             fit: BoxFit.cover),
+//                       ),
+//                     ),
+//                     Container(
+//                       margin: EdgeInsets.fromLTRB(
+//                           20,
+//                           50 + MediaQuery.of(context).size.height * 0.35,
+//                           20,
+//                           20),
+//                       child: Column(
+//                         children: <Widget>[
+//                           const Text(
+//                             "Beautiful painting On afternoon",
+//                             maxLines: 2,
+//                             textAlign: TextAlign.center,
+//                             style: TextStyle(
+//                                 color: Color(0xfff56d56), fontSize: 25),
+//                           ),
+//                           Container(
+//                             margin: EdgeInsets.fromLTRB(0, 20, 0, 15),
+//                             child: Row(
+//                                 mainAxisAlignment: MainAxisAlignment.center,
+//                                 children: <Widget>[
+//                                   Text(
+//                                     "Posting On",
+//                                     style: TextStyle(
+//                                         color: Colors.grey, fontSize: 12),
+//                                   ),
+//                                   Text(
+//                                     "August 15, 2022",
+//                                     style: TextStyle(
+//                                         color: Color(0xfff56d56), fontSize: 12),
+//                                   ),
+//                                 ]),
+//                           ),
+//                           Row(
+//                             children: <Widget>[
+//                               Spacer(flex: 10,),
+//                               //Icon
+//                               Icon(Icons.thumb_up_outlined, size: 18, color: Colors.green,),
+//                               Spacer(flex: 1),
+//                               //Text
+//                               Text("999", style: TextStyle(color: Colors.green),),
+//                               Spacer(flex: 5,),
+//                               //Icon
+//                               Icon(Icons.comment, size: 18, color: Colors.green,),
+//                               Spacer(flex: 1,),
+//                               //Text
+//                                Text("999", style: TextStyle(color: Colors.green),),
+//                               Spacer(flex: 10,),
+//                             ],
+//                           )
+//                         ],
+//                       ),
+//                     )
+//                   ],
+//                 ),
+//               ),
+//             ),
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 //======================= 22 InkWell (Buat Button sendiri) =====================
 // class MyApp extends StatelessWidget {
